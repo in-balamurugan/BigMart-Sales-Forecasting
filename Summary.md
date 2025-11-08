@@ -11,7 +11,7 @@ This project aims to predict sales for BigMart outlets using historical sales da
 - **Categorical Encoding:** Ordinal and one-hot encoding are used for categorical variables.
  ------------
 
-## 2. Feature Engineering
+##  Feature Engineering
 
 Several new features are created to strengthen model signal:
 
@@ -95,6 +95,13 @@ flowchart TD
 	E & F & G --> H[Stacking ]
 	H --> I[Submission Files]
 ```
+## Result Achieved
+**RMSE Achieved:**  1151
+**Leaderboard Position:** 1156
+Approximately this model predicts only 25 items away from the leaderboard position(MAE ~ 0.8*RMSE)
+
+![Leaderboard](leader_board.png)
+
 
 ## Things Tried That Did Not Help
 1. Target encoding of item/store identifiers gave similar performance to label encoding.
