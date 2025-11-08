@@ -9,6 +9,66 @@ This project aims to predict sales for BigMart outlets using historical sales da
 - **Aggregated Features:** Outlet and item-type level statistics are merged to enrich the dataset.
 - **Target Encoding:** KFold target encoding is applied to product and store identifier
 - **Categorical Encoding:** Ordinal and one-hot encoding are used for categorical variables.
+ ------------
+
+## 2. Feature Engineering
+
+Several new features are created to strengthen model signal:
+
+### **Item-specific aggregations**
+- Mean weight  
+- Mean visibility  
+- Mean MRP  
+
+### **Outlet-level aggregations**
+- Mean sales  
+- Number of items sold  
+
+### **Visibility correction**
+- Replaces zeros with average visibility per item (common BigMart fix)
+
+### **Combined features**
+- `Price_per_unit_weight`  
+- `MRP_bins` using MRP quantiles  
+- `Outlet_Age` = year difference from establishment year  
+
+### **Categorical encoding**
+- Label Encoding is applied for all tree-based models.
+
+
+## **Feature Engineering**
+
+Several new features are created to strengthen model signal:
+
+### **Item-specific aggregations**
+- Mean weight  
+- Mean visibility  
+- Mean MRP  
+
+### **Outlet-level aggregations**
+- Mean sales  
+- Number of items sold  
+
+### **Visibility correction**
+- Replaces zeros with average visibility per item (common BigMart fix)
+
+### **Combined features**
+- `Price_per_unit_weight`  
+- `MRP_bins` using MRP quantiles  
+- `Outlet_Age` = year difference from establishment year  
+
+### **Categorical encoding**
+- Label Encoding is applied for all tree-based models.
+
+
+
+## **Cross-Validation Setup**
+
+- Uses **k-fold cross-validation** (typically 5 folds).  
+- Folds are **shuffled** to avoid outlet-based leakage.  
+- **Out-of-fold (OOF) predictions** are stored for validation.  
+
+
 
 ## Modeling Approach
 - **Models Used:** LightGBM, XGBoost, and Random Forest are trained using KFold cross-validation.
